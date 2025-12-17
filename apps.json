@@ -3,8 +3,9 @@
 "id": "splitify",
 "name": "Splitify",
 "category": "Utility",
-"version": "1.2.0",
-"description": "The ultimate tool for bill splitting and group expense management. Minimalist, fast, and completely free.",
+"version": "1.2.1",
+"status": "Trending",
+"description": "The ultimate tool for bill splitting and group expense management. Designed with the Gem Labs precision, it handles complex math so you don't have to.",
 "icon": "assets/splitify.svg",
 "url": "https://www.google.com/search?q=https://gem-labs.github.io/splitify"
 },
@@ -12,8 +13,9 @@
 "id": "focus-gem",
 "name": "Focus Gem",
 "category": "Productivity",
-"version": "0.9.5",
-"description": "A deep-work timer designed for the monochrome aesthetic. Stay locked in with ambient sounds and a distraction-free UI.",
+"version": "0.9.8",
+"status": "New",
+"description": "A deep-work timer designed for the monochrome aesthetic. Stay locked in with ambient sounds and a distraction-free UI that melts away.",
 "icon": "clock",
 "url": "#"
 },
@@ -21,8 +23,9 @@
 "id": "vault",
 "name": "Vault",
 "category": "Security",
-"version": "2.0.1",
-"description": "End-to-end encrypted notepad. Your secrets belong to you, and only you.",
+"version": "2.0.5",
+"status": "Updated",
+"description": "End-to-end encrypted notepad. Your secrets belong to you, and only you. Military-grade encryption meets minimalist design.",
 "icon": "shield-check",
 "url": "#"
 }
