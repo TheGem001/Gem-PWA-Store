@@ -1,7 +1,7 @@
 {
   "name": "Gem Store",
   "short_name": "Gem Store",
-  "description": "The central digital distribution platform for all software developed by Gem Labs.",
+  "description": "Gem Labs Official App Marketplace",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#FFFFFF",
@@ -9,15 +9,9 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "https://via.placeholder.com/192x192/111111/FFFFFF?text=Gem",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "https://via.placeholder.com/512x512/111111/FFFFFF?text=Gem",
-      "sizes": "512x512",
-      "type": "image/png",
+      "src": "assets/gem-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
       "purpose": "any maskable"
     }
   ]
