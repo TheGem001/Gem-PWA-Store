@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gem Store | Gem Labs</title>
+    <!-- Tailwind CSS for modern, minimalist design -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom "Gem Mono" Design Tokens */
+        :root {
+            --gem-bg: #FFFFFF;
+            --gem-ghost: #F9FAFB;
+            --gem-black: #111111;
+            --gem-border: #EEEEEE;
+        }
+
+        body {
+            background-color: var(--gem-bg);
+            color: var(--gem-black);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .app-card {
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .app-card:active {
+            transform: scale(0.98);
+        }
+
+        /* Hide scrollbar but keep functionality */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* PWA specific safe area padding */
+        .safe-area-bottom {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-[#EEEEEE] px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-[#111111] flex items-center justify-center rounded-lg">
+                <i data-lucide="gem" class="text-white w-5 h-5"></i>
+            </div>
+            <h1 class="text-xl font-bold tracking-tight">Gem Store</h1>
+        </div>
+        <button id="install-btn" class="hidden text-sm font-semibold bg-[#111111] text-white px-4 py-2 rounded-full">
+            Install
+        </button>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 max-w-2xl mx-auto w-full px-6 py-8">
+        
+        <!-- Search/Filter Bar -->
+        <div class="mb-10">
+            <h2 class="text-3xl font-extrabold mb-2">Discover</h2>
+            <p class="text-gray-500 mb-6">Explore the Gem Labs ecosystem.</p>
+            <div class="relative">
+                <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5"></i>
+                <input type="text" id="app-search" placeholder="Search apps..." class="w-full bg-[#F9FAFB] border-none rounded-2xl py-4 pl-12 pr-4 focus:ring-2 focus:ring-[#111111]/10 outline-none transition-all">
+            </div>
+        </div>
+
+        <!-- App Grid -->
+        <div id="app-container" class="space-y-6">
+            <!-- Shimmer Loading State -->
+            <div class="animate-pulse space-y-6">
+                <div class="h-24 bg-gray-100 rounded-2xl"></div>
+                <div class="h-24 bg-gray-100 rounded-2xl"></div>
+                <div class="h-24 bg-gray-100 rounded-2xl"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- App Detail Modal (Overlay) -->
+    <div id="app-modal" class="fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
+        <div class="bg-white w-full max-w-lg rounded-t-3xl sm:rounded-3xl p-8 transform translate-y-full transition-transform duration-300 shadow-2xl">
+            <div class="flex justify-between items-start mb-6">
+                <div id="modal-icon" class="w-20 h-20 bg-gray-100 rounded-2xl flex items-center justify-center">
+                    <!-- Icon injected here -->
+                </div>
+                <button onclick="closeModal()" class="p-2 bg-gray-100 rounded-full">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <h3 id="modal-title" class="text-2xl font-bold mb-1"></h3>
+            <p id="modal-category" class="text-gray-400 text-sm mb-4 uppercase tracking-widest font-bold"></p>
+            <p id="modal-description" class="text-gray-600 leading-relaxed mb-8"></p>
+            
+            <div class="grid grid-cols-2 gap-4 mb-8">
+                <div class="bg-gray-50 p-4 rounded-2xl">
+                    <p class="text-xs text-gray-400 uppercase">Version</p>
+                    <p id="modal-version" class="font-bold"></p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-2xl">
+                    <p class="text-xs text-gray-400 uppercase">Size</p>
+                    <p id="modal-size" class="font-bold"></p>
+                </div>
+            </div>
+
+            <a id="modal-link" href="#" target="_blank" class="block w-full bg-[#111111] text-white text-center py-4 rounded-2xl font-bold hover:bg-black transition-colors">
+                Open App
+            </a>
+            <div class="h-6 safe-area-bottom"></div>
+        </div>
+    </div>
+
+    <!-- Offline Notification -->
+    <div id="offline-toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-red-500 text-white px-6 py-3 rounded-full shadow-lg z-[100] hidden">
+        <div class="flex items-center gap-2">
+            <i data-lucide="wifi-off" class="w-4 h-4"></i>
+            <span class="text-sm font-medium">You are offline. Showing cached apps.</span>
+        </div>
+    </div>
+
+    <script>
+        // Mock Dynamic Metadata (Usually from apps.json)
+        const mockApps = [
+            {
+                id: 'splitify',
+                name: 'Splitify',
+                category: 'Utility',
+                version: '1.2.0',
+                size: '4.2 MB',
+                description: 'The ultimate tool for bill splitting and group expense management. Minimalist, fast, and completely free.',
+                icon: 'pie-chart',
+                url: 'https://gem-labs.github.io/splitify'
+            },
+            {
+                id: 'focus-gem',
+                name: 'Focus Gem',
+                category: 'Productivity',
+                version: '0.9.5',
+                size: '2.1 MB',
+                description: 'A deep-work timer designed for the monochrome aesthetic. Stay locked in with ambient sounds and a distraction-free UI.',
+                icon: 'clock',
+                url: '#'
+            },
+            {
+                id: 'vault',
+                name: 'Vault',
+                category: 'Security',
+                version: '2.0.1',
+                size: '8.4 MB',
+                description: 'End-to-end encrypted notepad. Your secrets belong to you, and only you.',
+                icon: 'shield-check',
+                url: '#'
+            }
+        ];
+
+        let deferredPrompt;
+
+        // Initialize App
+        function init() {
+            lucide.createIcons();
+            renderApps(mockApps);
+            setupSearch();
+            setupPWA();
+            checkOnlineStatus();
+        }
+
+        function renderApps(apps) {
+            const container = document.getElementById('app-container');
+            container.innerHTML = '';
+
+            if (apps.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12">
+                        <i data-lucide="search-x" class="mx-auto w-12 h-12 text-gray-300 mb-4"></i>
+                        <p class="text-gray-500">No apps found matching your search.</p>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            apps.forEach(app => {
+                const card = document.createElement('div');
+                card.className = 'app-card flex items-center justify-between p-4 rounded-2xl border border-[#EEEEEE] hover:bg-[#F9FAFB] cursor-pointer';
+                card.onclick = () => openModal(app);
+                
+                card.innerHTML = `
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 bg-[#111111] text-white flex items-center justify-center rounded-2xl">
+                            <i data-lucide="${app.icon}" class="w-8 h-8"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">${app.name}</h3>
+                            <p class="text-sm text-gray-500">${app.category}</p>
+                        </div>
+                    </div>
+                    <button class="bg-[#F3F4F6] text-[#111111] px-5 py-2 rounded-full text-sm font-bold hover:bg-gray-200">
+                        GET
+                    </button>
+                `;
+                container.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        function setupSearch() {
+            const searchInput = document.getElementById('app-search');
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                const filtered = mockApps.filter(app => 
+                    app.name.toLowerCase().includes(query) || 
+                    app.category.toLowerCase().includes(query)
+                );
+                renderApps(filtered);
+            });
+        }
+
+        // Modal Logic
+        function openModal(app) {
+            const modal = document.getElementById('app-modal');
+            const content = modal.querySelector('div');
+            
+            document.getElementById('modal-title').innerText = app.name;
+            document.getElementById('modal-category').innerText = app.category;
+            document.getElementById('modal-description').innerText = app.description;
+            document.getElementById('modal-version').innerText = app.version;
+            document.getElementById('modal-size').innerText = app.size;
+            document.getElementById('modal-link').href = app.url;
+            document.getElementById('modal-icon').innerHTML = `<i data-lucide="${app.icon}" class="w-10 h-10 text-[#111111]"></i>`;
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.remove('translate-y-full');
+            }, 10);
+            
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('app-modal');
+            const content = modal.querySelector('div');
+            content.classList.add('translate-y-full');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // PWA & Install logic
+        function setupPWA() {
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                document.getElementById('install-btn').classList.remove('hidden');
+            });
+
+            document.getElementById('install-btn').addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    if (outcome === 'accepted') {
+                        document.getElementById('install-btn').classList.add('hidden');
+                    }
+                    deferredPrompt = null;
+                }
+            });
+        }
+
+        function checkOnlineStatus() {
+            const toast = document.getElementById('offline-toast');
+            const updateStatus = () => {
+                if (navigator.onLine) {
+                    toast.classList.add('hidden');
+                } else {
+                    toast.classList.remove('hidden');
+                }
+            };
+            window.addEventListener('online', updateStatus);
+            window.addEventListener('offline', updateStatus);
+            updateStatus();
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
