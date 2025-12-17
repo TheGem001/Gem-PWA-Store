@@ -3,28 +3,25 @@
 "id": "splitify",
 "name": "Splitify",
 "category": "Utility",
-"version": "8.2",
-"Ratings": "4.2 Stars",
+"version": "1.2.0",
 "description": "The ultimate tool for bill splitting and group expense management. Minimalist, fast, and completely free.",
 "icon": "assets/splitify.svg",
-"url": "https://gem-labs-pk.github.io/Splitify/"
+"url": "https://www.google.com/search?q=https://gem-labs.github.io/splitify"
 },
 {
 "id": "focus-gem",
-"name": "Focus Gem (Not Available)",
+"name": "Focus Gem",
 "category": "Productivity",
 "version": "0.9.5",
-"size": "2.1 MB",
 "description": "A deep-work timer designed for the monochrome aesthetic. Stay locked in with ambient sounds and a distraction-free UI.",
 "icon": "clock",
 "url": "#"
 },
 {
 "id": "vault",
-"name": "Vault(Not Available)",
+"name": "Vault",
 "category": "Security",
 "version": "2.0.1",
-"size": "8.4 MB",
 "description": "End-to-end encrypted notepad. Your secrets belong to you, and only you.",
 "icon": "shield-check",
 "url": "#"
