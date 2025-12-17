@@ -3,10 +3,10 @@
 "id": "splitify",
 "name": "Splitify",
 "category": "Utility",
-"version": "1.3.0",
-"status": "Mastery",
+"version": "1.3.1",
+"status": "Live",
 "featured": true,
-"description": "The ultimate tool for bill splitting and group expense management. Minimalist, fast, and completely free. Version 1.3 features improved math logic and smoother transitions.",
+"description": "The ultimate tool for bill splitting and group expense management. Minimalist, fast, and completely free.",
 "icon": "assets/splitify.svg",
 "url": "https://thegem001.github.io/Gem-PWA-Store/"
 }
