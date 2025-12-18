@@ -9,16 +9,16 @@
 },
   {
     "id": "hero-2", 
-    "title": "Student Dairy", 
+    "title": "To Be", 
     "subtitle": "Beta Version", 
     "label": "New", 
     "image": "assets/productivity.jpg", 
-    "action": "student-dairy" 
+    "action": "tobe" 
   },
   {
     "id": "hero-3", 
     "title": "Coming Soon", 
-    "subtitle": "More Coming Soon", 
+    "subtitle": "Click To Check About", 
     "label": "Upcoming", 
     "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop", 
     "action": "about" 
