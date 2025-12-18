@@ -3,7 +3,7 @@
  * UPDATED: Network-First strategy for apps.json to ensure data updates immediately.
  */
 
-const CACHE_NAME = 'gem-store-v1.4';
+const CACHE_NAME = 'gem-store-v1.4.0';
 const ASSETS = [
   './',
   './index.html',
