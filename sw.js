@@ -3,7 +3,7 @@
  * Manual Swipe & Feedback Update.
  */
 
-const CACHE_NAME = 'gem-store-v1.7';
+const CACHE_NAME = 'gem-store-v1.7.0';
 const ASSETS = [
   './',
   './index.html',
