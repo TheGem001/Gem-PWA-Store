@@ -1,9 +1,9 @@
 /**
- * Gem Store Service Worker (v1.5)
- * UPDATED: Includes slides.json in network-first logic.
+ * Gem Store Service Worker (v1.6)
+ * Performance & Stability Update.
  */
 
-const CACHE_NAME = 'gem-store-v1.5';
+const CACHE_NAME = 'gem-store-v1.6';
 const ASSETS = [
   './',
   './index.html',
@@ -28,7 +28,7 @@ self.addEventListener('activate', (e) => {
 self.addEventListener('fetch', (e) => {
   const url = new URL(e.request.url);
 
-  // Network-First for dynamic JSON data
+  // Network-First for dynamic JSON data to ensure updates show up immediately
   if (url.pathname.endsWith('apps.json') || url.pathname.endsWith('slides.json')) {
     e.respondWith(
       fetch(e.request)
