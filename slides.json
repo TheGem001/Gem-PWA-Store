@@ -5,17 +5,22 @@
   "subtitle": "The ultimate expense companion.",
   "label": "Mastery", 
   "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop", 
-  "action": "splitify" },
-  { "id": "hero-2", 
+  "action": "splitify" 
+},
+  {
+    "id": "hero-2", 
     "title": "Student Dairy", 
     "subtitle": "Beta Version", 
     "label": "New", 
     "image": "assets/productivity.jpg", 
-    "action": "student-dairy" },
-  { "id": "hero-2", 
+    "action": "student-dairy" 
+  },
+  {
+    "id": "hero-2", 
     "title": "Student Dairy", 
     "subtitle": "Beta Version", 
     "label": "New", 
     "image": "assets/productivity.jpg", 
-    "action": "student-dairy" }
+    "action": "student-dairy" 
+  }
 ]
