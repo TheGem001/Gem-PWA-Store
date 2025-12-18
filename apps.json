@@ -11,14 +11,14 @@
 "url": "https://gem-labs-pk.github.io/Splitify/"
 },
 {
-"id": "gem-notes",
-"name": "Gem Notes",
+"id": "student-dairy",
+"name": "Student Dairy",
 "category": "Productivity",
-"version": "0.1.0",
-"status": "Soon",
-"description": "A distraction-free writing environment. Markdown support, local encryption, and instant sync. Coming early 2026.",
+"version": "1.0",
+"status": "New",
+"description": "A distraction-free writing environment.",
 "icon": "edit-3",
-"url": "#"
+"url": "https://gem-labs-pk.github.io/Student-Dairy/"
 },
 {
 "id": "lumina",
