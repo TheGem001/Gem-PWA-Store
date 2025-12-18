@@ -3,7 +3,7 @@
  * Performance & Stability Update.
  */
 
-const CACHE_NAME = 'gem-store-v1.6.2.0';
+const CACHE_NAME = 'gem-store-v1.6.2.0.1';
 const ASSETS = [
   './',
   './index.html',
