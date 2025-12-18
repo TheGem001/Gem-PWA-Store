@@ -8,6 +8,26 @@
 "featured": true,
 "description": "The ultimate tool for bill splitting and group expense management. Minimalist, fast, and completely free.",
 "icon": "assets/splitify.svg",
-"url": "https://gem-labs-pk.github.io/Gem-PWA-Store/"
+"url": "https://gem-labs-pk.github.io/Splitify/"
+},
+{
+"id": "gem-notes",
+"name": "Gem Notes",
+"category": "Productivity",
+"version": "0.1.0",
+"status": "Soon",
+"description": "A distraction-free writing environment. Markdown support, local encryption, and instant sync. Coming early 2026.",
+"icon": "edit-3",
+"url": "#"
+},
+{
+"id": "lumina",
+"name": "Lumina",
+"category": "Design",
+"version": "0.0.1",
+"status": "Draft",
+"description": "An abstract wallpaper generator for the monochrome aesthetic. Create unique 'Gem Mono' backgrounds in seconds.",
+"icon": "aperture",
+"url": "#"
 }
 ]
