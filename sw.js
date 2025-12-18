@@ -1,9 +1,9 @@
 /**
- * Gem Store Service Worker (v1.4)
- * UPDATED: Network-First strategy for apps.json to ensure data updates immediately.
+ * Gem Store Service Worker (v1.5)
+ * UPDATED: Includes slides.json in network-first logic.
  */
 
-const CACHE_NAME = 'gem-store-v1.4.0';
+const CACHE_NAME = 'gem-store-v1.5';
 const ASSETS = [
   './',
   './index.html',
@@ -21,22 +21,15 @@ self.addEventListener('install', (e) => {
 });
 
 self.addEventListener('activate', (e) => {
-  e.waitUntil(
-    caches.keys().then(keys => Promise.all(
-      keys.map(k => {
-        if (k !== CACHE_NAME) return caches.delete(k);
-      })
-    ))
-  );
+  e.waitUntil(caches.keys().then(keys => Promise.all(keys.map(k => k !== CACHE_NAME && caches.delete(k)))));
   return self.clients.claim();
 });
 
 self.addEventListener('fetch', (e) => {
   const url = new URL(e.request.url);
 
-  // V1.4: NETWORK-FIRST for the app directory (apps.json)
-  // This ensures that when you delete/add apps, the change reflects immediately if online.
-  if (url.pathname.endsWith('apps.json')) {
+  // Network-First for dynamic JSON data
+  if (url.pathname.endsWith('apps.json') || url.pathname.endsWith('slides.json')) {
     e.respondWith(
       fetch(e.request)
         .then(response => {
@@ -49,7 +42,6 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
-  // Cache-First for everything else
   e.respondWith(caches.match(e.request).then(res => res || fetch(e.request)));
 });
 
