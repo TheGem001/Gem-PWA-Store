@@ -21,13 +21,13 @@
 "url": "https://gem-labs-pk.github.io/Student-Dairy/"
 },
 {
-"id": "lumina",
-"name": "Lumina",
-"category": "Design",
+"id": "ToBe",
+"name": "To Be",
+"category": "Productivity",
 "version": "0.0.1",
-"status": "Draft",
-"description": "An abstract wallpaper generator for the monochrome aesthetic. Create unique 'Gem Mono' backgrounds in seconds.",
-"icon": "aperture",
-"url": "#"
+"status": "Beta Version",
+"description": "Developed by Gem Labs, To Be. It addresses core issues like task forgetfulness and lack of time management through a high-performance.",
+"icon": "assets/to.svg",
+"url": "https://gem-labs-pk.github.io/To-Be/"
 }
 ]
