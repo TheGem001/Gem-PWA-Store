@@ -1,33 +1,53 @@
 [
-{
-"id": "splitify",
-"name": "Splitify",
-"category": "Utility",
-"version": "1.3.1",
-"status": "Live",
-"featured": true,
-"description": "The ultimate tool for bill splitting and group expense management. Minimalist, fast, and completely free.",
-"icon": "assets/splitify.svg",
-"url": "https://gem-labs-pk.github.io/Splitify/"
-},
-{
-"id": "student-dairy",
-"name": "Student Dairy",
-"category": "Productivity",
-"version": "1.0",
-"status": "New",
-"description": "A distraction-free writing environment.",
-"icon": "assets/dairy.svg",
-"url": "https://gem-labs-pk.github.io/Student-Dairy/"
-},
-{
-"id": "To-Be",
-"name": "To Be",
-"category": "Productivity",
-"version": "0.0.1",
-"status": "Beta Version",
-"description": "Developed by Gem Labs, To Be. It addresses core issues like task forgetfulness and lack of time management through a high-performance.",
-"icon": "assets/to.svg",
-"url": "https://gem-labs-pk.github.io/To-Be/"
-}
+  {
+    "id": "splitify",
+    "name": "Splitify",
+    "category": "Utility",
+    "version": "1.3.1",
+    "status": "Live",
+    "featured": true,
+    "description": "The ultimate tool for bill splitting and group expense management. Minimalist, fast, and completely free.",
+    "icon": "assets/splitify.svg",
+    "url": "https://gem-labs-pk.github.io/Splitify/"
+  },
+  {
+    "id": "soul-calculator",
+    "name": "Soul Calculator",
+    "category": "Lifestyle",
+    "version": "1.0",
+    "status": "New",
+    "description": "Discover the hidden metrics of your life. A unique calculator for personal and fun insights.",
+    "icon": "ghost",
+    "url": "https://gem-labs-pk.github.io/soul-calculator/"
+  },
+  {
+    "id": "cgpa-calculator",
+    "name": "CGPA Calculator",
+    "category": "Education",
+    "version": "1.0",
+    "status": "Beta",
+    "description": "Track your academic progress. Calculate your Semester and Cumulative GPA instantly.",
+    "icon": "graduation-cap",
+    "url": "https://thegem001.github.io/CGPA-Calculator/"
+  },
+  {
+    "id": "status-maker",
+    "name": "Status Maker",
+    "category": "Social",
+    "version": "1.0",
+    "status": "New",
+    "description": "Create beautiful text-based statuses and updates for your social profiles in seconds.",
+    "icon": "message-square-plus",
+    "url": "https://gem-labs-pk.github.io/Status-Maker/"
+  },
+  {
+    "id": "quotes",
+    "name": "Quotes",
+    "category": "Lifestyle",
+    "version": "1.0",
+    "status": "Live",
+    "description": "A minimalist collection of thoughts and inspirations to brighten your day.",
+    "icon": "quote",
+    "url": "https://thegem001.github.io/Quotes/"
+  }
 ]
